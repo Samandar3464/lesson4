@@ -45,12 +45,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-core -->
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-core</artifactId>
-            <version>9.22.0</version>
-        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -67,32 +61,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-maven-plugin</artifactId>
-                <version>9.16.3</version>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>undo</goal>
-                            <goal>migrate</goal>
-                            <goal>info</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <url>jdbc:postgresql://localhost:5432/postgres?currentSchema=fly</url>
-                    <driver>org.postgresql.Driver</driver>
-                    <user>postgres</user>
-                    <password>postgres</password>
-                    <baselineOnMigrate>true</baselineOnMigrate>
-                    <schemas>fly</schemas>
-                    <locations>
-                        <location>classpath:db/migration/</location>
-                    </locations>
-                </configuration>
             </plugin>
         </plugins>
     </build>

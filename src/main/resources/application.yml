@@ -2,13 +2,12 @@ spring:
   datasource:
     username: postgres
     password: postgres
-    url: 'jdbc:postgresql://localhost:5432/postgres?currentSchema=fly'
+    url: 'jdbc:postgresql://localhost:5432/postgres?currentSchema=liquibase'
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-  flyway:
-    locations: classpath:db/migration
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
     enabled: true
-
