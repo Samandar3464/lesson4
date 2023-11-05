@@ -1,0 +1,1 @@
+insert into author( firstname, lastname)values ('Samandar', 'Shodmonov');

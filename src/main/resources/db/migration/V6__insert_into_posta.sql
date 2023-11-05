@@ -1,0 +1,1 @@
+insert into posta( title, authorId)values ('MY_first_book', 1);
