@@ -11,7 +11,7 @@ import uz.pdp.databasemigration.service.UserService;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/user")
 public class UserController {
 
     private final UserService userService;
