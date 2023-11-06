@@ -1,4 +1,4 @@
-package uz.pdp.dataabsemigration;
+package uz.pdp.databasemigration;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
