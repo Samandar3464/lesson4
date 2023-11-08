@@ -24,7 +24,7 @@ public class StudentController {
 
     @GetMapping("/getWithJavaChashir/{id}")
     public Student getWithJavaChashir(@PathVariable Integer id){
-        return studentService.getWithJavaChashir(id);
+        return studentService.getWithJavaCasher(id);
     }
 
     @GetMapping("/getWithRedis/{id}")
