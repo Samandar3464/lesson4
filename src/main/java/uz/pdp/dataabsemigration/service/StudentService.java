@@ -62,6 +62,7 @@ public class StudentService {
     }
     @SneakyThrows
     public Student getWithRedis(Integer id) {
+        Student fromCash = cache.get(id, Student.class);
         if (fromCash != null) {
             return fromCash;
         } else {
