@@ -2,10 +2,10 @@ package uz.pdp.dataabsemigration.service;
 
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
 import uz.pdp.dataabsemigration.dto.StudentDto;
 import uz.pdp.dataabsemigration.entity.Student;
+import uz.pdp.dataabsemigration.repository.PostRepository;
 
 import java.util.concurrent.ConcurrentHashMap;
 
