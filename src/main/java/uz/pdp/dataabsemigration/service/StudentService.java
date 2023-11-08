@@ -16,20 +16,20 @@ import java.util.concurrent.TimeUnit;
 public class StudentService {
     private final StudentRepository studentRepository;
     private final CacheManager cacheManager;
-    private final Cache cache;
     private final StudentMapper studentMapper;
+    private final Cache cache ;
 
-    public StudentService(StudentRepository studentRepository,
-                          CacheManager cacheManager,
-                          Cache cache,
-                          StudentMapper studentMapper) {
-        this.studentRepository = studentRepository;
-        this.cacheManager = cacheManager;
-        this.cache = cacheManager.getCache("student");
-        this.studentMapper = studentMapper;
-    }
 
     private ConcurrentHashMap<Integer, Student> mapCash = new ConcurrentHashMap<>();
+
+    public StudentService(StudentRepository studentRepository,
+                          CacheManager cacheManager1, CacheManager cacheManager,
+                          StudentMapper studentMapper) {
+        this.studentRepository = studentRepository;
+        this.cacheManager = cacheManager1;
+        this.cache =  cacheManager.getCache("student");
+        this.studentMapper = studentMapper;
+    }
 
     public Student createStudent(StudentDto dto) {
         Student entity = studentMapper.toEntity(dto);
@@ -40,11 +40,13 @@ public class StudentService {
     public Student getWithMap(Integer id) {
         Student fromMapCash = getFromMapCash(id);
         if (fromMapCash != null) {
+            System.out.println("map casdan olindi ");
             return fromMapCash;
         } else {
             Student student = studentRepository.findById(id).orElseThrow();
             saveToMapCash(student);
             TimeUnit.SECONDS.sleep(2);
+            System.out.println("databasedan olindi ");
             return student;
         }
     }
@@ -52,11 +54,13 @@ public class StudentService {
     public Student getWithJavaCasher(Integer id) {
         Student fromCash = cache.get(id, Student.class);
         if (fromCash != null) {
+            System.out.println("java cashdan olindi ");
             return fromCash;
         } else {
             Student student = studentRepository.findById(id).orElseThrow();
             cache.put(student.getId(),student);
             TimeUnit.SECONDS.sleep(2);
+            System.out.println("databasedan olindi ");
             return student;
         }
     }
@@ -64,11 +68,13 @@ public class StudentService {
     public Student getWithRedis(Integer id) {
         Student fromCash = cache.get(id, Student.class);
         if (fromCash != null) {
+            System.out.println("redisdan olindi ");
             return fromCash;
         } else {
             Student student = studentRepository.findById(id).orElseThrow();
             saveToMapCash(student);
             TimeUnit.SECONDS.sleep(2);
+            System.out.println("databasedan olindi ");
             return student;
         }
     }
