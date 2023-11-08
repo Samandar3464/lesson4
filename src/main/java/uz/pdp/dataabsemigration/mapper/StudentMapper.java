@@ -7,7 +7,7 @@ import uz.pdp.dataabsemigration.entity.Student;
 
 @Component
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
-public interface BlogMapper {
+public interface StudentMapper {
     Student toEntity(StudentDto blogDto);
 
     StudentDto toDto(Student blog);
