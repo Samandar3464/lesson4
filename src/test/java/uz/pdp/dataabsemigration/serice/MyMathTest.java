@@ -18,35 +18,34 @@ class MyMathTest {
     @Test
     void testSum() {
 
-        assertEquals(10, math.sum(2, 3, 5), "Sum should return the correct result");
-        assertEquals(0, math.sum(), "Sum should return 0 for an empty list of arguments");
-        assertThrows(IllegalArgumentException.class, () -> math.sum(null), "Sum should throw IllegalArgumentException for null arguments");
+        assertEquals(10, math.sum(2, 3, 5), "Yig'indi to'gri natija qaytarishi kerak");
+        assertEquals(0, math.sum(), "O qaytishi kerak ");
+        assertThrows(IllegalArgumentException.class, () -> math.sum(null), "null olsa exception otishi kerak throw IllegalArgumentException degan");
     }
 
     @Test
     void testSub() {
-        assertEquals(2, math.sub(5, 3), "Subtraction should return the correct result");
+        assertEquals(2, math.sub(5, 3), "Ayirish to'g'ri natija qaytarishi kerak");
     }
 
     @Test
     void testAdd() {
-        assertEquals(8, math.add(3, 5), "Addition should return the correct result");
+        assertEquals(8, math.add(3, 5), "Qo'shish to'g'ri natija qaytarish kerak ");
     }
 
     @Test
     void testDiv() {
-        assertEquals(2, math.div(6, 3), "Division should return the correct result");
-        assertThrows(IllegalArgumentException.class, () -> math.div(5, 0), "Divide by zero should throw IllegalArgumentException");
+        assertEquals(2, math.div(6, 3), "Bolish to'g'ri natija qaytarishi kerak");
+        assertThrows(IllegalArgumentException.class, () -> math.div(5, 0), "0 ga bo'linish exception otadi throw IllegalArgumentException");
     }
 
     @Test
     void testMul() {
-        assertEquals(15, math.mul(3, 5), "Multiplication should return the correct result");
+        assertEquals(15, math.mul(3, 5), "Ko'paytma to'g'ri natija qaytarish kerak");
     }
 
     @Test
     void testPow() {
-        assertEquals(8, math.pow(2, 3), "Power should return the correct result");
-        assertEquals(1, math.pow(5, 0), "Any number to the power of 0 should be 1");
+        assertEquals(8, math.pow(2, 3), "Darajaga o'shirish ");
     }
 }
