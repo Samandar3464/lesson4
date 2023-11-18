@@ -22,6 +22,7 @@ public class UserController {
     public Users getUserById(@Argument Integer id) {
         return userService.getUserById(id);
     }
+
     @QueryMapping
     public List<Users> getAllUsers() {
         return userService.getAllUsers();
