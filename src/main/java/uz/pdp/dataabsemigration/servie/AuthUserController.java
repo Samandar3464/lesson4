@@ -1,6 +1,7 @@
 package uz.pdp.dataabsemigration.servie;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,40 +10,33 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/authuser")
+@RequiredArgsConstructor
 public class AuthUserController {
   
   private final AuthUserService authUserService;
 
-  public AuthUserController(AuthUserService service) {
-      this.authUserService = service;
-  }
 
   @PostMapping
-  public ResponseEntity<String> create(@Valid @RequestBody AuthUserCreateDTO dto) {
+  public ResponseEntity<String> create(@Valid @RequestBody Password dto) {
       authUserService.create(dto);
-      return new ResponseEntity<>("Successfully Created - User", HttpStatus.CREATED);
+      return new ResponseEntity<>("Created", HttpStatus.CREATED);
   }
 
   @PutMapping
   public ResponseEntity<String> update(@Valid @RequestBody AuthUserUpdateDTO dto) {
       authUserService.update(dto);
-      return new ResponseEntity<>("Successfully Updated - User", HttpStatus.OK);
+      return new ResponseEntity<>("Updated", HttpStatus.OK);
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<String> delete(@PathVariable String id) {
+  public ResponseEntity<String> delete(@PathVariable Integer id) {
       authUserService.delete(id);
-      return new ResponseEntity<>("Successfully Deleted - User", HttpStatus.NO_CONTENT);
+      return new ResponseEntity<>("Deleted", HttpStatus.NO_CONTENT);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<AuthUserGetDTO> get(@PathVariable String id) {
+  public ResponseEntity<Password> get(@PathVariable Integer id) {
       return new ResponseEntity<>(authUserService.get(id), HttpStatus.OK);
-  }
-
-  @GetMapping
-  public ResponseEntity<List<AuthUserGetDTO>> list(@Valid AuthUserCriteria criteria) {
-      return new ResponseEntity<>(authUserService.list(criteria), HttpStatus.OK);
   }
 
 }
