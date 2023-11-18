@@ -1,4 +1,4 @@
-package uz.pdp.dataabsemigration.servie;
+package uz.pdp.dataabsemigration;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,13 +8,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Users {
-
+@Entity
+public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String title;
+    private String description;
+    private Category category;
+    private Level level;
+    private boolean completed;
 }
